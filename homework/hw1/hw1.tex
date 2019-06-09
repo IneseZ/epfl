@@ -1,0 +1,92 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{lscape}
+\usepackage{setspace}
+\usepackage{amssymb,amsmath}
+\usepackage{amsfonts}
+\usepackage{verbatim}
+\usepackage{fullpage}
+\usepackage{bbm}
+\usepackage{natbib}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage{hyperref}
+\hypersetup{citebordercolor= 1 1 1, linkbordercolor = 0 1 0}
+
+\bibpunct{(}{)}{,}{a}{}{,}
+
+\usepackage{textcomp}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\epstopdfsetup{suffix=}
+
+\usepackage[labelfont=bf]{caption}
+\usepackage{subfig}
+\usepackage{rotating}
+
+\captionsetup[table]{position=top}
+\captionsetup[figure]{position=bottom}
+
+\usepackage{tabularx}
+
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing}
+\tikzstyle{point}=[thick,fill=gray,gray]
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}{Assumption}
+\newtheorem{claim}{Claim}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{result}{Result}
+\newenvironment{proof}[1][Proof]{\noindent\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+
+\newcommand{\real}{\mathbbm{R}}
+\newcommand{\rhat}{\widehat{r}}
+\newcommand{\indicator}[1]{\mathbbm{1}{\left( {#1} \right) }}
+
+\newcommand{\expect}[4]{{\mathbbm{E}_{#1}}{\left#2 \, {#4} \, \right#3 }}
+\newcommand{\condexpect}[5]{{\mathbbm{E}_{#1}}{\left#2 \, {#4} \; \middle\vert \; {#5} \, \right#3 }}
+
+\newcommand{\prob}[1]{\Pr{\left[ \, {#1} \, \right] }}
+\newcommand{\condprob}[2]{\Pr{\left[ \, {#1} \; \middle\vert \; {#2} \, \right] }}
+
+\newcommand{\variance}[1]{V{\left[ \, #1 \, \right] }}
+
+\newcommand{\setbuild}[2]{\left{\, {#1} \mid {#2} \, \right}}
+\newcommand{\derivative}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\map}[3]{{#1}:{#2}\rightarrow{#3}}
+\newcommand{\argmax}[1]{\underset{#1}{\operatorname{arg}\,\operatorname{max}}\;}
+
+\geometry{left=1in,right=1in,top=1in,bottom=1.2in}
+
+\onehalfspacing
+
+\begin{document} 
+
+\begin{enumerate}
+
+\item Write a program in the language of your choice to compute the parameter estimates for the multinomial mixture model using the EM algorithm, beginning from arbitrary initial values.  The formulas for these are in the class lecture slides.
+
+  Data.zip contains four files:
+  \begin{itemize}
+  \item doc\_term\_matrix.csv contains the document-term matrix for the corpus of US Presidential State of the Union address beginning in the 18th century through today.
+  \item index.csv indexes the rows of the matrix according to the year of the address and the President.
+  \item token\_dict.csv provides the mapping between column indices (beginning from 0) and stems.
+  \item tfidf\_ranking.csv provides the corpus-level tf-idf ranking of terms.
+  \end{itemize}
+
+Apply your code from above to the data contained in data.zip.  Verify that after each iteration the observed data log-likelihood function (i.e. the last expression in slide 16 of lecture 2) increases.  Note this property holds for any initial values for the parameters, so you can select whichever you like.  A good rule-of-thumb is to set $\rho_k = 1/K$ and randomly draw $\boldsymbol\beta_k$, for example from a Dirichlet distribution.
+
+\end{enumerate}
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
